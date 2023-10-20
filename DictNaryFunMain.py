@@ -40,4 +40,7 @@ class PlaceFinder():
 
     def get_info_place(self,amntplace):
        for i in range(amntplace):
-           eki
+           Placekeyword = input("what type of place would you like to add: ")
+           with open("text.txt","w") as file:
+               file.write(Placekeyword)
+               
