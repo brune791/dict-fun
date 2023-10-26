@@ -1,46 +1,44 @@
-
 Places = [
     {
         "location": 'Century',
-        "reasons" : "For school and sports",
-        "address" : "2000 SE Century Blvd, Hillsboro, OR 97123"
+        "reasons": "For school and sports",
+        "address": "2000 SE Century Blvd, Hillsboro, OR 97123"
     },
     {
         "location": 'home1',
-        "reasons" : "sleeping and hanging out with my mom", 
-        "Address" : "5667 se pine st", 
-        "time_to" : [{"Century": "3 min"},]
+        "reasons": "sleeping and hanging out with my mom",
+        "address": "5667 SE Pine St",
+        "time_to": {"Century": "3 min"}
     },
     {
         "location": 'home2',
-        "reasons" : "my dads house where i live",
-        "Address" : "7767 sw ave",
-        "time_to" : "15 - 20 min"
-    },
-    ]
+        "reasons": "my dad's house where I live",
+        "address": "7767 SW Ave",
+        "time_to": {"Century": "15 - 20 min"}
+    }
+]
 
 def main():
-   # Iterate through the list of places
+    print("Available Places:")
     for place in Places:
-        location = place.get("location")
-        print(f"location: {location}")
-    
-    # Iterate through the inner dictionary
-    for key_inner in Places.keys():
-        print(f"Inner Key: {key_inner}")
-    userInputOuterKey = str(input("what would you like to see? outerkey:"))
-    userInputInnerKey = str(input("what would you like to see? innerkey:"))
+        print(f"{place['location']} - {place['reasons']}")
 
-    print(Places[userInputOuterKey][userInputInnerKey])
-class PlaceFinder():
+    userInputOuterKey = input("Enter the place you want to see: ")
 
-    def __init__(self,amntplace,):
+    # Check if the user input is a valid place
+    place_found = False
+    for place in Places:
+        if place["location"] == userInputOuterKey:
+            place_found = True
+            userInputInnerKey = input(f"Enter the information you want to see for {userInputOuterKey} (location, reasons, address, or time_to): ")
+            if userInputInnerKey in place:
+                print(f"{userInputInnerKey}: {place[userInputInnerKey]}")
+            else:
+                print(f"{userInputInnerKey} not found for {userInputOuterKey}")
+            break
 
-        self.amntplace = amntplace
+    if not place_found:
+        print(f"Place '{userInputOuterKey}' not found.")
 
-    def get_info_place(self,amntplace):
-       for i in range(amntplace):
-           Placekeyword = input("what type of place would you like to add: ")
-           with open("text.txt","w") as file:
-               file.write(Placekeyword)
-               
+if __name__ == "__main__":
+    main()
