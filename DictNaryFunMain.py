@@ -40,5 +40,46 @@ def main():
     if not place_found:
         print(f"Place '{userInputOuterKey}' not found.")
 
-if __name__ == "__main__":
-    main()
+def add_location():
+    check = input("do you want to add a location? (Yes : No) ")
+    if check == "Yes":
+        new_location = input("Name your location: ")
+        Places.append(new_location)
+        Places[3]["location"] = new_location
+
+        user_ask = input("what would you like to add in this location? \n 1: reasons \n 2:address \n 3: time_too \n 4: All of them ")
+        
+        if user_ask == 1:
+            user_add_reason
+            Places[3]["reasons"] = user_add_reason
+
+        elif user_ask == 2:
+            user_add_address
+            Places[3]["address"] = user_add_address
+
+        elif user_ask == 3:
+            user_add_time
+            Places[3]["time_to"] = user_add_time
+
+        elif user_ask == 4:
+            user_add_reason
+            Places[3]["reasons"] = user_add_reason
+
+            user_add_address
+            Places[3]["address"] = user_add_address
+
+            user_add_time
+            Places[3]["time_to"] = user_add_time
+
+    elif check == "No":
+        main()
+    user_add_reason=(f"you chose to add a reason to '{new_location}'")
+    user_add_address=(f"you chose to add a address to '{new_location}' what is the address?: ")
+    user_add_time = (f"you chose to add time too'{new_location}'how far is it?")
+
+
+
+
+
+
+add_location()
